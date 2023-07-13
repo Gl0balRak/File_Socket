@@ -8,7 +8,7 @@ PATH = "./files/"
 
 if __name__ == "__main__":
     sock = socket.socket()
-    sock.connect(('localhost', 9090))
+    sock.connect(('192.168.1.218', 9090))
 
 
     files = list(os.walk("./files"))[0][2]
