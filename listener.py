@@ -14,7 +14,7 @@ print('connected:', addr)
 while True:
     data = conn.recv(102400000)
 
-    name = data.decode().split("\n")[0]
+    name = data.decode().split("\n")[0][1:]
 
     with open(f"{PATH}{name}", "wb") as f:
         f.write(data)
