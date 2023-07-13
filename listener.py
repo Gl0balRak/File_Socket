@@ -2,7 +2,7 @@ import socket
 
 
 PATH = "./send/"
-END_SIGN = "kontz124534_per"
+END_SIGN = "\n;kontz124534_per"
 
 sock = socket.socket()
 sock.bind(('', 9090))
@@ -14,20 +14,30 @@ print('connected:', addr)
 
 while True:
 
-    text = ""
     fst = True
     name = ""
-    while text[-len(END_SIGN):] != END_SIGN:
 
+    l = []
+
+    while "".join(l)[-len(END_SIGN):] != END_SIGN:
         data = conn.recv(1460)
+        conn.send(b'o')
         if fst:
             name = data.decode().split("\n")[0][1:]
+            print(name)
+
+            f1 = open(f"{PATH}{name}", "w", encoding="utf-8")
+            f1.write("")
+            f1.close()
+
+            file = open(f"{PATH}{name}", "a", encoding="utf-8")
             fst = False
-        text += data.decode()
 
-    text = text[:-len(END_SIGN)]
+        d_data = data.decode(encoding="utf-8")
+        l = l[1:] + [d_data]
+        file.write(d_data)
+    conn.send(b'a')
+    file.close()
 
-    with open(f"{PATH}{name}", "w", encoding="utf-8") as f:
-        f.write(text)
 
 conn.close()
