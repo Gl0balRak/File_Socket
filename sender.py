@@ -5,6 +5,7 @@ from time import perf_counter
 
 
 PATH = "./files/"
+END_SIGN = "\n10974623ds4g5d"
 
 
 if __name__ == "__main__":
@@ -18,7 +19,7 @@ if __name__ == "__main__":
         for file in n_files:
             if file not in files:
                 with open(f"{PATH}{file}", "r", encoding='utf-8') as f:
-                    data = f";{file}\n" + f.read() + "\n;kontz124534_per"
+                    data = f";{file}\n" + f.read() + END_SIGN
 
                 print(f"Start data translation {PATH}{file}")
                 sock.send(str.encode(data))
