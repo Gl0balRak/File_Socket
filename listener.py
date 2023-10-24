@@ -2,7 +2,7 @@ import socket
 
 
 PATH = "./send/"
-END_SIGN = "\n;kontz124534_per"
+END_SIGN = "\n10974623ds4g5d"
 
 sock = socket.socket()
 sock.bind(('', 9090))
